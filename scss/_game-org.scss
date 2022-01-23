@@ -22,15 +22,15 @@
     text-align: center;
 
     p:first-child {
-      color: $score-text;
       font-size: 0.8rem;
+      color: $score-text;
     }
 
     #three-way-score,
     #five-way-score {
-      color: $dark-text;
       font-size: 2rem;
       font-weight: 700;
+      color: $dark-text;
     }
   }
 }
@@ -47,10 +47,10 @@
     background-repeat: no-repeat;
     background-position: 50% 2.5rem;
 
-    &.display-none{
+    &.display-none {
       display: none;
     }
-    
+
     .scissors {
       justify-self: end;
     }
@@ -59,7 +59,6 @@
       grid-column: span 2;
       justify-self: center;
     }
-
   }
 }
 
@@ -74,6 +73,10 @@
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: 50% 2.5rem;
+
+    &.display-none {
+      display: none;
+    }
 
     .scissors {
       grid-column: span 2;
@@ -93,7 +96,8 @@
 
 .step-two-opponent-move {
   position: relative;
-top: 10rem;
+  top: 10rem;
+
   .gridbox {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -102,14 +106,14 @@ top: 10rem;
     justify-items: center;
 
     p {
-      letter-spacing: 1px;
       font-size: 0.9rem;
+      letter-spacing: 1px;
     }
   }
 
   .game-summary {
-    text-align: center;
     margin-top: 3rem;
+    text-align: center;
 
     p {
       font-size: 3rem;
@@ -120,10 +124,10 @@ top: 10rem;
       margin-top: 1rem;
       width: 12rem;
       height: 3.5rem;
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
       color: $dark-blue;
-      border-radius: 8px;
-      border: none;
       letter-spacing: 2px;
       transition: transform 0.2s ease-in-out;
 
@@ -161,9 +165,9 @@ top: 10rem;
 
   #three-way-game {
     .step-one-select-move {
+      grid-template-rows: 280px 130px;
       background-size: 50%;
       background-position: 50% 5.5rem;
-      grid-template-rows: 280px 130px;
 
       .paper {
         left: 5rem;
@@ -176,10 +180,11 @@ top: 10rem;
 
   #five-way-game {
     .step-one-select-move {
+      height: 80%;
       grid-template-columns: 2fr 1fr 2fr;
-      grid-template-rows: 120px 200px 100px;
-      background-size: 51%;
-      background-position: 50% 1.5rem;
+      grid-template-rows: 120px 250px 100px;
+      background-position: 50% 3.5rem;
+      background-size: 55%;
 
       grid-template-areas:
         ". icon-scissors ." "icon-spock . icon-paper"
@@ -244,9 +249,8 @@ top: 10rem;
 
     &.big-screen-solution {
       .gridbox {
-        grid-template-columns: 1fr 1fr 1fr;
-
         grid-template-areas: "title-player . title-cpu" "icon-player . icon-cpu";
+        grid-template-columns: 1fr 1fr 1fr;
       }
       .game-summary {
         position: relative;

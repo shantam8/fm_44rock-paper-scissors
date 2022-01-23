@@ -38,9 +38,18 @@
           </section>
 
           <section id="step-one-three-way" class="step-one-select-move">
-            <button class="paper scale-on-hover"></button>
-            <button class="scissors scale-on-hover"></button>
-            <button class="rock scale-on-hover"></button>
+            <button
+              class="paper scale-on-hover"
+              aria-label="select paper"
+            ></button>
+            <button
+              class="scissors scale-on-hover"
+              aria-label="select scissors"
+            ></button>
+            <button
+              class="rock scale-on-hover"
+              aria-label="select rock"
+            ></button>
           </section>
         </div>
 
@@ -60,28 +69,43 @@
           </section>
 
           <section id="step-one-five-way" class="step-one-select-move">
-            <button class="scissors scale-on-hover"></button>
-            <button class="spock scale-on-hover"></button>
-            <button class="paper scale-on-hover"></button>
-            <button class="lizard scale-on-hover"></button>
-            <button class="rock scale-on-hover"></button>
+            <button
+              class="scissors scale-on-hover"
+              aria-label="select scissors"
+            ></button>
+            <button
+              class="spock scale-on-hover"
+              aria-label="select spock"
+            ></button>
+            <button
+              class="paper scale-on-hover"
+              aria-label="select paper"
+            ></button>
+            <button
+              class="lizard scale-on-hover"
+              aria-label="select lizard"
+            ></button>
+            <button
+              class="rock scale-on-hover"
+              aria-label="select rock"
+            ></button>
           </section>
         </div>
-
-        <section id="step-two" class="step-two-opponent-move display-none">
-          <div class="gridbox">
-            <div class="player-selection-box selection-placeholder"></div>
-            <div class="cpu-selection-box selection-placeholder"></div>
-            <p>You picked</p>
-            <p>the house picked</p>
-          </div>
-
-          <div class="game-summary display-none">
-            <p class="msg-win-loose"></p>
-            <button id="btn-play-again">play again</button>
-          </div>
-        </section>
       </div>
+
+      <section id="step-two" class="step-two-opponent-move display-none">
+        <div class="gridbox">
+          <div class="player-selection-box selection-placeholder"></div>
+          <div class="cpu-selection-box selection-placeholder"></div>
+          <p>You picked</p>
+          <p>the house picked</p>
+        </div>
+
+        <div class="game-summary display-none">
+          <p class="msg-win-loose"></p>
+          <button id="btn-play-again">play again</button>
+        </div>
+      </section>
       <button id="btn-show-rules">Rules</button>
     </main>
 

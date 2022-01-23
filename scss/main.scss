@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
-
 @import "colors";
 @import "player-icons";
 @import "game-org";
@@ -15,8 +14,8 @@ h2,
 button,
 p {
   font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 600;
   text-transform: uppercase;
+  font-weight: 600;
   color: white;
 }
 
@@ -25,9 +24,9 @@ header {
 }
 
 body {
-  padding-top: 1rem;
   position: relative;
   height: 100vh;
+  padding-top: 1rem;
   background: radial-gradient(
     circle farthest-side at top,
     hsl(214, 47%, 23%),
@@ -51,10 +50,10 @@ body {
 }
 
 main {
-  height: 80%;
   position: relative;
   margin: 2rem auto 0 auto;
   width: 280px;
+  height: 80%;
 }
 
 .game-cards-flip-container {
@@ -68,6 +67,10 @@ main {
 
   &.rotate {
     transform: rotateY(90deg);
+  }
+
+  &.hight-unset {
+    height: unset;
   }
 }
 
@@ -221,10 +224,10 @@ main {
     background-color: transparent;
 
     & .rules-content-container {
+      padding: 1rem;
       background-color: white;
       border-radius: 8px;
       align-items: start;
-      padding: 1rem;
 
       h2 {
         margin-top: 0;
@@ -232,9 +235,9 @@ main {
 
       #btn-close-rules {
         position: absolute;
-        bottom: unset;
         top: 1rem;
         right: 1rem;
+        bottom: unset;
       }
     }
   }

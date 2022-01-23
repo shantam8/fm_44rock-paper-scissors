@@ -10,12 +10,11 @@ let pageRules = document.querySelector("#page-rules");
 let msgThreeWayScore = document.querySelector("#three-way-score");
 let msgFiveWayScore = document.querySelector("#five-way-score");
 let msgGameSummary = document.querySelector(".game-summary");
-let stepTwoSection = document.querySelector("#step-two");
 let backdrop = document.querySelector(".backdrop");
 
 let stepOneThreeWay = document.querySelector("#step-one-three-way");
 let stepOneFiveWay = document.querySelector("#step-one-five-way");
-let stepTwo = document.querySelector("#step-two");
+let stepTwoSection = document.querySelector("#step-two");
 
 let playerSelectionBox = document.querySelector(".player-selection-box");
 let cpuSelectionBox = document.querySelector(".cpu-selection-box");
@@ -27,43 +26,15 @@ let gameModeThreeWay = true;
 let threeWayScore;
 let fiveWayScore;
 
-function initNewGame() {
-  stepOneThreeWay.classList.remove("display-none");
-  stepOneFiveWay.classList.remove("display-none");
-
-  console.log(btnPlayAgain);
-
-  stepTwo.classList.add("display-none");
-  msgGameSummary.classList.add("display-none");
-  playerSelection = "";
-  cpuSelection = "";
-  playerSelectionBox.classList.remove(
-    "paper",
-    "scissors",
-    "rock",
-    "lizard",
-    "spock",
-    "won"
-  );
-  cpuSelectionBox.classList.remove(
-    "paper",
-    "scissors",
-    "rock",
-    "lizard",
-    "spock",
-    "won"
-  );
-  playerSelectionBox.classList.add("selection-placeholder");
-  cpuSelectionBox.classList.add("selection-placeholder");
-  stepTwoSection.classList.remove("big-screen-solution");
-}
-
 async function handleGame() {
+  document
+    .querySelector(".game-cards-flip-container")
+    .classList.add("hight-unset");
+
   await setPlayerSelection();
   await cpuMakesSelection();
 
   playerWon = checkWinningConditions();
-  console.log("win? " + playerWon);
   await showGameSummary();
   raiseScore();
   markWinnerEffect();
@@ -73,37 +44,6 @@ function markWinnerEffect() {
   playerWon
     ? playerSelectionBox.classList.add("won")
     : cpuSelectionBox.classList.add("won");
-}
-
-function initScores() {
-  if (localStorage.hasOwnProperty("threeWayScore")) {
-    threeWayScore = parseInt(localStorage.getItem("threeWayScore"));
-  } else {
-    threeWayScore = 0;
-  }
-
-  if (localStorage.hasOwnProperty("fiveWayScore")) {
-    fiveWayScore = parseInt(localStorage.getItem("fiveWayScore"));
-  } else {
-    fiveWayScore = 0;
-  }
-
-  msgThreeWayScore.textContent = threeWayScore;
-  msgFiveWayScore.textContent = fiveWayScore;
-}
-
-function raiseScore() {
-  if (playerWon) {
-    if (gameModeThreeWay) {
-      threeWayScore++;
-      msgThreeWayScore.textContent = threeWayScore;
-      localStorage.setItem("threeWayScore", threeWayScore);
-    } else {
-      msgFiveWayScore.textContent = fiveWayScore;
-      fiveWayScore++;
-      localStorage.setItem("fiveWayScore", fiveWayScore);
-    }
-  }
 }
 
 function showGameSummary() {
@@ -126,11 +66,8 @@ function checkWinningConditions() {
       (playerSelection == "scissors" && cpuSelection == "paper") ||
       (playerSelection == "paper" && cpuSelection == "rock")
     ) {
-      console.log("i  win");
-
       return true;
     } else {
-      console.log("i dont  win");
       return false;
     }
   } else {
@@ -146,24 +83,11 @@ function checkWinningConditions() {
       (playerSelection == "spock" && cpuSelection == "scissors") ||
       (playerSelection == "spock" && cpuSelection == "rock")
     ) {
-      console.log("i  win");
-
       return true;
     } else {
-      console.log("i dont  win");
       return false;
     }
   }
-}
-
-function setPlayerSelection() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      playerSelectionBox.classList.add(playerSelection);
-      playerSelectionBox.classList.remove("selection-placeholder");
-      resolve();
-    }, 200);
-  });
 }
 
 function cpuMakesSelection() {
@@ -186,6 +110,16 @@ function cpuMakesSelection() {
   });
 }
 
+function setPlayerSelection() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      playerSelectionBox.classList.add(playerSelection);
+      playerSelectionBox.classList.remove("selection-placeholder");
+      resolve();
+    }, 200);
+  });
+}
+
 function handlePlayerSelection(event) {
   if (event.target.classList.contains("paper")) {
     playerSelection = "paper";
@@ -199,12 +133,11 @@ function handlePlayerSelection(event) {
     playerSelection = "spock";
   }
 
-  console.log("player selected " + playerSelection);
   gameModeThreeWay
     ? stepOneThreeWay.classList.add("display-none")
     : stepOneFiveWay.classList.add("display-none");
 
-  stepTwo.classList.remove("display-none");
+  stepTwoSection.classList.remove("display-none");
   handleGame();
 }
 
@@ -227,7 +160,6 @@ function toggleGameMode() {
 
   if (gameModeThreeWay) {
     gameModeThreeWay = false;
-    console.log(pageRules.children[0].children[1]);
     pageRules.children[0].children[1].style.backgroundImage =
       'url("../images/image-rules-bonus.svg")';
   } else {
@@ -235,7 +167,70 @@ function toggleGameMode() {
     pageRules.children[0].children[1].style.backgroundImage =
       'url("../images/image-rules.svg")';
   }
-  console.log(gameModeThreeWay);
+  initNewGame();
+}
+
+function raiseScore() {
+  if (playerWon) {
+    if (gameModeThreeWay) {
+      threeWayScore++;
+      msgThreeWayScore.textContent = threeWayScore;
+      localStorage.setItem("threeWayScore", threeWayScore);
+    } else {
+      msgFiveWayScore.textContent = fiveWayScore;
+      fiveWayScore++;
+      localStorage.setItem("fiveWayScore", fiveWayScore);
+    }
+  }
+}
+
+function initScores() {
+  if (localStorage.hasOwnProperty("threeWayScore")) {
+    threeWayScore = parseInt(localStorage.getItem("threeWayScore"));
+  } else {
+    threeWayScore = 0;
+  }
+
+  if (localStorage.hasOwnProperty("fiveWayScore")) {
+    fiveWayScore = parseInt(localStorage.getItem("fiveWayScore"));
+  } else {
+    fiveWayScore = 0;
+  }
+
+  msgThreeWayScore.textContent = threeWayScore;
+  msgFiveWayScore.textContent = fiveWayScore;
+}
+
+function initNewGame() {
+  document
+    .querySelector(".game-cards-flip-container")
+    .classList.remove("hight-unset");
+  stepOneThreeWay.classList.remove("display-none");
+  stepOneFiveWay.classList.remove("display-none");
+
+  stepTwoSection.classList.add("display-none");
+  msgGameSummary.classList.add("display-none");
+  playerSelection = "";
+  cpuSelection = "";
+  playerSelectionBox.classList.remove(
+    "paper",
+    "scissors",
+    "rock",
+    "lizard",
+    "spock",
+    "won"
+  );
+  cpuSelectionBox.classList.remove(
+    "paper",
+    "scissors",
+    "rock",
+    "lizard",
+    "spock",
+    "won"
+  );
+  playerSelectionBox.classList.add("selection-placeholder");
+  cpuSelectionBox.classList.add("selection-placeholder");
+  stepTwoSection.classList.remove("big-screen-solution");
 }
 
 function init() {
