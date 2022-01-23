@@ -161,11 +161,11 @@ function toggleGameMode() {
   if (gameModeThreeWay) {
     gameModeThreeWay = false;
     pageRules.children[0].children[1].style.backgroundImage =
-      'url("../images/image-rules-bonus.svg")';
+      'url("./images/image-rules-bonus.svg")';
   } else {
     gameModeThreeWay = true;
     pageRules.children[0].children[1].style.backgroundImage =
-      'url("../images/image-rules.svg")';
+      'url("./images/image-rules.svg")';
   }
   initNewGame();
 }
