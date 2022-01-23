@@ -1,0 +1,126 @@
+@mixin player-styling {
+  position: relative;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  &:after {
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 75%;
+    border-radius: 50%;
+    border-top: 5px solid lightgray;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+  }
+}
+
+.paper {
+  @include player-styling();
+
+  background: linear-gradient(
+    to bottom,
+    hsl(230, 89%, 65%),
+    hsl(230, 89%, 62%)
+  );
+  box-shadow: 0px 6px 0px -2px darken(hsl(230, 89%, 62%), 15%);
+
+  &:after {
+    background-image: url(../images/icon-paper.svg);
+  }
+}
+
+.scissors {
+  @include player-styling();
+
+  background: linear-gradient(to bottom, hsl(40, 84%, 53%), hsl(39, 89%, 49%));
+  box-shadow: 0px 6px 0px -2px darken(hsl(39, 89%, 49%), 15%);
+
+  &:after {
+    background-image: url(../images/icon-scissors.svg);
+  }
+}
+
+.rock {
+  @include player-styling();
+  background: linear-gradient(
+    to bottom,
+    hsl(349, 70%, 56%),
+    hsl(349, 71%, 52%)
+  );
+  box-shadow: 0px 6px 0px -2px darken(hsl(349, 71%, 52%), 15%);
+
+  &:after {
+    background-image: url(../images/icon-rock.svg);
+  }
+}
+
+.lizard {
+  @include player-styling();
+  background: linear-gradient(
+    to bottom,
+    hsl(261, 72%, 63%),
+    hsl(261, 73%, 60%)
+  );
+  box-shadow: 0px 6px 0px -2px darken(hsl(261, 73%, 60%), 15%);
+
+  &:after {
+    background-image: url(../images/icon-lizard.svg);
+  }
+}
+
+.spock {
+  @include player-styling();
+  background: linear-gradient(
+    to bottom,
+    hsl(189, 58%, 57%),
+    hsl(189, 59%, 53%)
+  );
+  box-shadow: 0px 6px 0px -2px darken(hsl(189, 59%, 53%), 15%);
+
+  &:after {
+    background-image: url(../images/icon-spock.svg);
+  }
+}
+
+@media screen and(min-width:30rem) {
+  .paper,
+  .scissors,
+  .rock,
+  .lizard,
+  .spock {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media screen and(min-width:50rem) {
+  #five-way-game {
+    #step-one {
+      .paper,
+      .scissors,
+      .rock,
+      .lizard,
+      .spock {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+  
+  .paper,
+  .scissors,
+  .rock,
+  .lizard,
+  .spock {
+    width: 200px;
+    height: 200px;
+  }
+}

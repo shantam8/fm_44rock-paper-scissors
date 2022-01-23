@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Rock, Paper, Scissors | shantam8</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <button id="btn-toggle-game-mode" class="btn-toggle-game">
+        switch game
+      </button>
+    </header>
+
+    <main>
+      <div class="game-cards-flip-container">
+        <div id="three-way-game" class="game-card">
+          <section class="title-container">
+            <div class="title-box">
+              <h2>Rock</h2>
+              <h2>Paper</h2>
+              <h2>Scissors</h2>
+            </div>
+            <div class="score-box">
+              <p>score</p>
+              <p id="three-way-score"></p>
+            </div>
+          </section>
+
+          <section id="step-one-three-way" class="step-one-select-move">
+            <button class="paper scale-on-hover"></button>
+            <button class="scissors scale-on-hover"></button>
+            <button class="rock scale-on-hover"></button>
+          </section>
+        </div>
+
+        <div id="five-way-game" class="game-card display-none">
+          <section class="title-container">
+            <div class="title-box">
+              <h2>Rock</h2>
+              <h2>Paper</h2>
+              <h2>Scissors</h2>
+              <h2>Lizard</h2>
+              <h2>Spock</h2>
+            </div>
+            <div class="score-box">
+              <p>score</p>
+              <p id="five-way-score">0</p>
+            </div>
+          </section>
+
+          <section id="step-one-five-way" class="step-one-select-move">
+            <button class="scissors scale-on-hover"></button>
+            <button class="spock scale-on-hover"></button>
+            <button class="paper scale-on-hover"></button>
+            <button class="lizard scale-on-hover"></button>
+            <button class="rock scale-on-hover"></button>
+          </section>
+        </div>
+
+        <section id="step-two" class="step-two-opponent-move display-none">
+          <div class="gridbox">
+            <div class="player-selection-box selection-placeholder"></div>
+            <div class="cpu-selection-box selection-placeholder"></div>
+            <p>You picked</p>
+            <p>the house picked</p>
+          </div>
+
+          <div class="game-summary display-none">
+            <p class="msg-win-loose"></p>
+            <button id="btn-play-again">play again</button>
+          </div>
+        </section>
+      </div>
+      <button id="btn-show-rules">Rules</button>
+    </main>
+
+    <footer id="page-rules" class="display-none">
+      <div class="rules-content-container">
+        <h2>Rules</h2>
+        <div class="rule-image"></div>
+        <button id="btn-close-rules"></button>
+      </div>
+    </footer>
+    <div class="backdrop display-none"></div>
+  </body>
+</html>
