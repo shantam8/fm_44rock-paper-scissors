@@ -92,21 +92,43 @@ function checkWinningConditions() {
 
 function cpuMakesSelection() {
   return new Promise((resolve, reject) => {
-    let choices = ["paper", "scissors", "rock"];
+    if (gameModeThreeWay) {
+      let choices = ["paper", "scissors", "rock"];
 
-    setTimeout(() => {
-      choices.splice(choices.indexOf(playerSelection), 1);
-      let temp = Math.random();
+      setTimeout(() => {
+        choices.splice(choices.indexOf(playerSelection), 1);
+        let temp = Math.random();
 
-      if (temp > 0.5) {
-        cpuSelection = choices[0];
-      } else {
-        cpuSelection = choices[1];
-      }
-      cpuSelectionBox.classList.add(cpuSelection);
-      cpuSelectionBox.classList.remove("selection-placeholder");
-      resolve();
-    }, 2500);
+        if (temp > 0.5) {
+          cpuSelection = choices[0];
+        } else {
+          cpuSelection = choices[1];
+        }
+        cpuSelectionBox.classList.add(cpuSelection);
+        cpuSelectionBox.classList.remove("selection-placeholder");
+        resolve();
+      }, 2500);
+    } else {
+      let choices = ["paper", "scissors", "rock", "lizard", "spock"];
+
+      setTimeout(() => {
+        choices.splice(choices.indexOf(playerSelection), 1);
+        let temp = Math.random();
+
+        if (temp < 0.25) {
+          cpuSelection = choices[0];
+        } else if (temp < 0.5) {
+          cpuSelection = choices[1];
+        } else if (temp < 0.75) {
+          cpuSelection = choices[2];
+        } else {
+          cpuSelection = choices[3];
+        }
+        cpuSelectionBox.classList.add(cpuSelection);
+        cpuSelectionBox.classList.remove("selection-placeholder");
+        resolve();
+      }, 2500);
+    }
   });
 }
 

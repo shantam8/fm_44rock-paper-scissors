@@ -560,7 +560,7 @@ main {
 .game-cards-flip-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 70%;
   text-align: center;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -773,6 +773,9 @@ main {
   main {
     width: unset;
     max-width: 50rem;
+  }
+  .game-cards-flip-container {
+    height: 100%;
   }
   .selection-placeholder {
     width: 200px;
