@@ -198,10 +198,18 @@ function raiseScore() {
       threeWayScore++;
       msgThreeWayScore.textContent = threeWayScore;
       localStorage.setItem("threeWayScore", threeWayScore);
+      msgThreeWayScore.parentNode.classList.add("animateBox");
+      setTimeout(() => {
+        msgThreeWayScore.parentNode.classList.remove("animateBox");
+      }, 350);
     } else {
       msgFiveWayScore.textContent = fiveWayScore;
       fiveWayScore++;
       localStorage.setItem("fiveWayScore", fiveWayScore);
+      msgFiveWayScore.parentNode.classList.add("animateBox");
+      setTimeout(() => {
+        msgFiveWayScore.parentNode.classList.remove("animateBox");
+      }, 350);
     }
   }
 }

@@ -2,7 +2,6 @@
 @import "colors";
 @import "player-icons";
 @import "game-org";
-@import "game-five";
 
 * {
   padding: 0;
@@ -119,9 +118,7 @@ main {
     inset: 0;
     border-radius: 50%;
     opacity: 0.1;
-    box-shadow: 0 0 2px 20px lighten($dark-blue, 60%),
-      0 0 2px 40px lighten($dark-blue, 40%),
-      0 0 2px 60px lighten($dark-blue, 25%);
+    animation: animateWinMobile 0.5s ease-in-out 0s normal forwards;
     z-index: -1;
   }
 }
@@ -212,9 +209,7 @@ main {
   }
 
   .won::before {
-    box-shadow: 0 0 2px 50px lighten($dark-blue, 60%),
-      0 0 2px 100px lighten($dark-blue, 40%),
-      0 0 2px 150px lighten($dark-blue, 25%);
+    animation: animateWin30Rem 0.5s ease-in-out 0s normal forwards;
   }
 
   #page-rules.rules {
@@ -259,9 +254,7 @@ main {
   }
 
   .won::before {
-    box-shadow: 0 0 2px 80px lighten($dark-blue, 60%),
-      0 0 2px 160px lighten($dark-blue, 40%),
-      0 0 2px 240px lighten($dark-blue, 25%);
+    animation: animateWin50Rem 0.5s ease-in-out 0s normal forwards;
   }
 
   #btn-show-rules {
@@ -273,5 +266,53 @@ main {
     &:hover {
       transform: scale(1.05);
     }
+  }
+}
+
+@keyframes animateWinMobile {
+  0% {
+    box-shadow: 0 0 2px 0px lighten($dark-blue, 60%),
+      0 0 2px 0px lighten($dark-blue, 40%), 0 0 2px 0px lighten($dark-blue, 25%);
+  }
+  100% {
+    box-shadow: 0 0 2px 20px lighten($dark-blue, 60%),
+      0 0 2px 40px lighten($dark-blue, 40%),
+      0 0 2px 60px lighten($dark-blue, 25%);
+  }
+}
+
+@keyframes animateWin30Rem {
+  0% {
+    box-shadow: 0 0 2px 0px lighten($dark-blue, 60%),
+      0 0 2px 0px lighten($dark-blue, 40%), 0 0 2px 0px lighten($dark-blue, 25%);
+  }
+  100% {
+    box-shadow: 0 0 2px 50px lighten($dark-blue, 60%),
+      0 0 2px 100px lighten($dark-blue, 40%),
+      0 0 2px 150px lighten($dark-blue, 25%);
+  }
+}
+
+@keyframes animateWin50Rem {
+  0% {
+    box-shadow: 0 0 2px 0px lighten($dark-blue, 60%),
+      0 0 2px 0px lighten($dark-blue, 40%), 0 0 2px 0px lighten($dark-blue, 25%);
+  }
+  100% {
+    box-shadow: 0 0 2px 80px lighten($dark-blue, 60%),
+      0 0 2px 160px lighten($dark-blue, 40%),
+      0 0 2px 240px lighten($dark-blue, 25%);
+  }
+}
+
+@keyframes animatePointScored {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  40% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(10deg);
   }
 }
