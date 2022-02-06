@@ -203,8 +203,8 @@ function raiseScore() {
         msgThreeWayScore.parentNode.classList.remove("animateBox");
       }, 350);
     } else {
-      msgFiveWayScore.textContent = fiveWayScore;
       fiveWayScore++;
+      msgFiveWayScore.textContent = fiveWayScore;
       localStorage.setItem("fiveWayScore", fiveWayScore);
       msgFiveWayScore.parentNode.classList.add("animateBox");
       setTimeout(() => {
